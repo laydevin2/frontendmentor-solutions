@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | FAQ accordion</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @font-face {
+      font-family: 'worksans';
+      src: url('./assets/fonts/WorkSans-VariableFont_wght.ttf') format('truetype');
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    .container {
+      position: relative;
+    }
+
+    .b1 {
+      height: 40vh;
+      background-color: black;
+    }
+
+    .b2 {
+      height: 70vh;
+      background-color: hsl(275, 100%, 97%);
+    }
+
+    .box {
+      position: absolute;
+      width: 350px;
+      top: 45%;
+      left: 50%;
+      border-radius: 10px;
+      padding: 20px;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+    }
+
+    .faq {
+      font-size: 35px;
+      font-family: 'worksans', cursive;
+      font-weight: 800;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+
+    .sbblock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid lightgray;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    .p1 {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .p2 {
+      font-size: 12px;
+      font-weight: 400;
+      color: hsl(292, 16%, 49%);
+    }
+
+    .p3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: hsl(292, 16%, 49%);
+    }
+
+    @media screen and (max-width:410px) {
+      .box {
+        width: 300px;
+      }
+      
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="b1"></div>
+    <div class="b2"></div>
+
+    <div class="box">
+      <div class="faq">
+        <img src="./assets/images/icon-star.svg" style="width: 25px; height: 25px; margin-right: 10px;">
+        FAQs
+      </div>
+
+
+      <div class="sbblock p1">
+        <div>What is Frontend Mentor, and how will it help me?</div>
+        <img src="./assets/images/icon-minus.svg" style="width: 20px; height: 20px; margin-right: 10px;">
+      </div>
+
+      <p class="p2">
+        Frontend Mentor offers realistic coding challenges to help developers improve their
+        frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for
+        all levels and ideal for portfolio building.
+      </p>
+
+      <div class="sbblock p3">
+        <div>
+          Is Frontend Mentor free?
+        </div>
+        <img src="./assets/images/icon-plus.svg" style="width: 20px; height: 20px; margin-right: 10px;">
+      </div>
+
+      <div class="sbblock p3">
+        <div>Can I use Frontend Mentor projects in my portfolio?</div>
+        <img src="./assets/images/icon-plus.svg" style="width: 20px; height: 20px; margin-right: 10px;">
+      </div>
+
+      <div class="sbblock p3">
+        <div>How can I get help if I'm stuck on a challenge?</div>
+        <img src="./assets/images/icon-plus.svg" style="width: 20px; height: 20px; margin-right: 10px;">
+      </div>
+
+
+    </div>
+  </div>
+</body>
+
+</html>
