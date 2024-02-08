@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Frontend Mentor | Article preview component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      justify-content: center;
+      align-items: center;
+      background-color: hsl(210, 46%, 95%);
+    }
+
+    .box {
+      display: flex;
+      flex-direction: row;
+      width: 580px;
+      height: 200px;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    .pic1 {
+      height: 100%;
+      width: auto;
+      flex-shrink: 0;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    .p1 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .p2 {
+      font-size: 11px;
+      margin-top: 15px;
+    }
+
+
+    .p3 {
+      display: flex;
+      position: relative;
+      flex-direction: row;
+      margin-top: 15px;
+    }
+
+    .p5 {
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .pic2 {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .block {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .pic3 {
+      width: 12px;
+      height: 12px;
+      background-color: hsl(210, 46%, 95%);
+      padding: 6px;
+      border-radius: 10px;
+    }
+
+    .p4 {
+      display: none;
+      position: absolute;
+      top: -65px;
+      right: -82px;
+    }
+
+    .p4.active {
+      display: block;
+    }
+
+    .p4-child {
+      display: flex;
+      flex-direction: row;
+      padding-left: 25px;
+      padding-right: 25px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      background-color: black;
+      border-radius: 10px;
+    }
+
+    .share-font {
+      color: darkgray;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .pic4 {
+      background-color: transparent;
+      padding: 5dp;
+      margin-left: 15px;
+    }
+
+    .tail {
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+
+    }
+
+    @media screen and (max-width: 480px) {
+      .box {
+        display: flex;
+        flex-direction: column;
+        width: 340px;
+        height: 500px;
+        background-color: white;
+        border-radius: 10px;
+      }
+
+      .pic1 {
+        height: auto;
+        width: 100%;
+        flex-shrink: 0;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .p4 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        right: 0px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="box">
+      <img src="./images/drawers.jpg" class="pic1">
+      <div class="content">
+        <div class="p1">
+          Shift the overall look and feel by adding these wonderful
+          touches to furniture in your home
+        </div>
+        <div class="p2">
+          Ever been in a room and felt like something was missing? Perhaps
+          it felt slightly bare and uninviting. I’ve got some simple tips
+          to help you make any room feel complete.
+        </div>
+        <div class="p3">
+          <img src="./images/avatar-michelle.jpg" class="pic2">
+          <div class="block">
+            <div>
+              <div class="p4">Michelle Appleton</div>
+              <div class="p5">
+                28 Jun 2020
+                Share
+              </div>
+            </div>
+            <div><a href="#" id="myLink"><img src="./images/icon-share.svg" class="pic3"></a></div>
+          </div>
+          <div id="sharebar" class="p4">
+            <div class="p4-child">
+              <label class="share-font">SHARE</label>
+              <img src="./images/icon-facebook.svg" class="pic4">
+              <img src="./images/icon-twitter.svg" class="pic4">
+              <img src="./images/icon-pinterest.svg" class="pic4">
+              <a class="tail">
+                <i class="fa-solid fa-sort-down fa-2xl"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">devin</a>.
+  </div>
+
+  <script>
+    var myLink = document.getElementById('myLink');
+    var sharebar = document.getElementById('sharebar');
+    myLink.addEventListener('click', function (event) {
+      sharebar.classList.toggle('active');
+    });
+  </script>
+</body>
+
+</html>
