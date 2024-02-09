@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Age calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+
+    .container {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: hsl(0, 0%, 94%);
+    }
+
+    .box {
+      display: flex;
+      background-color: white;
+      border-radius: .8rem;
+      border-bottom-right-radius: 7rem;
+      flex-direction: column;
+      width: 350px;
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-right: 30%;
+    }
+
+    .header .block {
+      margin-left: 10px;
+    }
+
+    .header input {
+      width: 70px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      padding-left: 10px;
+      border: 1px solid hsl(0, 0%, 81%);
+      border-radius: 3px;
+      font-size: 16px;
+      font-weight: 800;
+      margin-top: 5px;
+    }
+
+    .header .title {
+      font-size: 0.6rem;
+      font-weight: 700;
+
+    }
+
+    .header .error-msg {
+      font-size: 0.5rem;
+      color: rgb(255, 132, 132);
+      margin-top: 5px;
+      display: none;
+    }
+
+    .error {
+      display: block !important;
+      color: rgb(255, 132, 132);
+    }
+
+    .separate {
+      position: relative;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .separate .line {
+      border: 1px solid rgb(215, 212, 212);
+    }
+
+    .separate .icon {
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      width: 45px;
+      height: 45px;
+      right: 0;
+      top: -15px;
+      background-color: blue;
+      border-radius: 25px;
+    }
+
+    .separate .icon img {
+      height: 60%;
+      width: 60%;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      font-size: 50px;
+      font-weight: 800;
+    }
+
+    .content .val {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="box">
+      <div class="header">
+        <div>
+          <div class="title dd">Day</div>
+          <input type="text" id="inputDay" oninput="validateDayInput(this)" maxlength="2" placeholder="DD">
+          <div class="error-msg dd">This field is required</div>
+        </div>
+        <div class="block">
+          <div class="title mm">Month</div>
+          <input type="text" id="inputMont" oninput="validateMonthInput(this)" maxlength="2" placeholder="MM">
+          <div class="error-msg mm">This field is required</div>
+        </div>
+        <div class="block">
+          <div class="title yy">Year</div>
+          <input type="text" id="inputYear" oninput="validateYearInput(this)"  maxlength="4" placeholder="YYYY">
+          <div class="error-msg yy">This field is required</div>
+        </div>
+      </div>
+
+      <div class="separate">
+
+        <div class="icon">
+          <img src="./assets/images/icon-arrow.svg" alt="">
+        </div>
+        <hr class="line">
+      </div>
+
+      <div class="content">
+        <div><label for="" id="year" class="val">--</label> years</div>
+        <div><label for="" id="month" class="val">--</label> months</div>
+        <div><label for="" id="day" class="val">--</label> days</div>
+      </div>
+
+    </div>
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script>
+    let year = document.getElementById('year');
+    let month = document.getElementById('month');
+    let day = document.getElementById('day');
+
+    function validateDayInput(input) {
+      var value = input.value;
+      console.log(value)
+      var pattern = /^(0?[1-9]|1[0-9]|2[0-9]|3[0-1])$/;
+      let dd = document.querySelectorAll('.dd');
+      if (!pattern.test(value)) {
+        if (dd && dd.length > 0) {
+          dd.forEach((e) => {
+            e.classList.add('error');
+          });
+        }
+        day.innerText = "--";
+      } else {
+        if (dd && dd.length > 0) {
+          dd.forEach((e) => {
+            e.classList.remove('error');
+          });
+        }
+        day.innerText = value;
+      }
+    }
+
+    function validateMonthInput(input) {
+      var value = input.value;
+      var pattern = /^(0?[1-9]|1[0-2])$/;
+      let mm = document.querySelectorAll('.mm');
+      if (!pattern.test(value)) {
+        if (mm && mm.length > 0) {
+          mm.forEach((e) => {
+            e.classList.add('error');
+          });
+        }
+        month.innerText = "--";
+      } else {
+        if (mm && mm.length > 0) {
+          mm.forEach((e) => {
+            e.classList.remove('error');
+          });
+        }
+        month.innerText = value;
+      }
+    }
+
+    function validateYearInput(input) {
+      var value = input.value;
+      var pattern = /^\d{1,4}$/;
+      let yy = document.querySelectorAll('.yy');
+      if (!pattern.test(value)) {
+        if (yy && yy.length > 0) {
+          yy.forEach((e) => {
+            e.classList.add('error');
+          });
+        }
+        year.innerText = "--";
+      } else {
+        if (yy && yy.length > 0) {
+          yy.forEach((e) => {
+            e.classList.remove('error');
+          });
+        }
+        year.innerText = value;
+      }
+    }
+
+  </script>
+</body>
+
+</html>
