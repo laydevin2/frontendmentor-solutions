@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Expenses chart component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <script src="./data.js"></script>
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(248, 240, 221);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+    }
+
+    .box1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: rgb(232, 133, 133);
+    }
+
+    .font1 {
+      font-size: 11px;
+      color: white;
+    }
+
+    .font2 {
+      font-size: 16px;
+      color: white;
+      margin-top: 10px;
+    }
+
+    .font3 {
+      font-size: 18px;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+
+    .box2 {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 20px;
+      background-color: rgb(255, 255, 255);
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+
+    .chart {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 160px;
+      margin-top: 15px;
+    }
+
+    .chart .block{
+      display: flex;
+      flex-direction: column-reverse;
+      height: 100%;
+      width: 45px;
+    }
+
+    .chart .block .bar {
+      border-radius: 5px;
+      background-color: rgb(244, 128, 115);
+      align-self: center;
+      width: 35px;
+    }
+
+    .chart .block .bar:hover {
+      cursor: pointer;
+    }
+
+    .chart .block .tip {
+      font-size: 13px;
+      padding: 4px;
+      background-color: black;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      margin-bottom: 3px;
+      display: none;
+    }
+
+    .chart .block .text {
+      text-align: center;
+    }
+
+    .footer {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding-top: 15px;
+      border-top: 1px solid rgb(187, 187, 187);
+    }
+
+    .footer .f1 {
+      font-size: 14px;
+      color: rgb(172, 170, 170);
+      margin-top: 3px;
+    }
+
+    .footer .f2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-top: 3px;
+    }
+
+    .footer .f3 {
+      font-size: 14px;
+      font-weight: 800;
+      text-align: right;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="box1">
+      <div>
+        <div class="font1">My balance</div>
+        <div class="font2">$921.48</div>
+      </div>
+      <img src="./images/logo.svg" alt="" srcset="">
+    </div>
+    <div class="box2">
+      <div class="font3">Spending - Last 7 days</div>
+      <div class="chart">
+        <div class="block">
+          <div class="text">mon</div>
+          <div id="d1" class="bar"></div>
+          <div id="t1" class="tip"></div>
+        </div>
+        <div class="block">
+          <div class="text">tue</div>
+          <div id="d2" class="bar"></div>
+          <div id="t2" class="tip"></div>
+        </div>
+        <div class="block">
+          <div class="text">wed</div>
+          <div id="d3" class="bar"></div>
+          <div id="t3" class="tip"></div>
+        </div>
+        <div class="block">
+          <div class="text">thu</div>
+          <div id="d4" class="bar"></div>
+          <div id="t4" class="tip"></div>
+        </div>
+        <div class="block">
+          <div class="text">fri</div>
+          <div id="d5" class="bar"></div>
+          <div id="t5" class="tip"></div>
+        </div>
+        <div class="block">
+          <div class="text">sat</div>
+          <div id="d6" class="bar"></div>
+          <div id="t6" class="tip"></div>
+        </div>
+        <div class="block">
+          <div class="text">sun</div>
+          <div id="d7" class="bar"></div>
+          <div id="t7" class="tip"></div>
+        </div>
+      </div>
+      <div class="footer">
+        <div>
+          <div class="f1">Total this month</div>
+          <div class="f2">$478.33</div>
+        </div>
+        <div>
+          <div class="f3">+2.4%</div>
+          <div class="f1">from last month</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    let i = 1;
+    const parsedData = JSON.parse(data);
+    parsedData.forEach(entry => {
+      let tid = `t${i}`;
+      let eid = `d${i++}`;
+      let e = document.getElementById(eid);
+      let t = document.getElementById(tid)
+      e.style.height = `${entry.amount + 20}%`;
+      if (entry.amount > 50){
+        e.style.backgroundColor = 'hsl(186, 34%, 60%)';
+      }
+      e.setAttribute('amount', entry.amount);
+      e.addEventListener('mouseover', function(){
+        const amount = e.getAttribute('amount')
+        t.innerHTML = `$${amount}`;
+        t.style.display = 'block';
+        e.style.opacity = 0.85;
+      });
+      e.addEventListener('mouseout', function(){
+        t.style.display = 'none';
+        e.style.opacity = 1;
+      });
+    })
+
+
+
+
+  </script>
+</body>
+
+</html>
