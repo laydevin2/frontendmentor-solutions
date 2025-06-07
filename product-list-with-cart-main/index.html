@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Product list with cart</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(242, 235, 159)
+    }
+
+    .container {
+      display: flex;
+      width: 70%;
+      height: 100vh;
+      background-color: rgb(252, 246, 223);
+      padding: 40px;
+    }
+
+    .left {
+      display: flex;
+      flex: 7;
+      flex-direction: column;
+    }
+
+    .leftbody {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .item {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 180px;
+      height: 220px;
+      margin: 20px;
+    }
+
+    .add {
+      position: absolute;
+      width: 100px;
+      height: 28px;
+      border: 1px solid rgb(232, 150, 150);
+      border-radius: 10px;
+      padding: 3px;
+      background-color: white;
+      left: 50%;
+      top: 80%;
+      transform: translate(-50%, -78%);
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .added {
+      /* display: none; */
+      position: absolute;
+      width: 100px;
+      height: 28px;
+      border-radius: 10px;
+      padding: 3px 10px;
+      background-color: rgb(247, 33, 33);
+      left: 50%;
+      top: 80%;
+      color: white;
+      transform: translate(-50%, -78%);
+      text-align: center;
+      /* display: flex; */
+      justify-content: space-between;
+      align-items: center;
+      display: none;
+    }
+
+    .txt1 {
+      margin-top: 20px;
+      font-size: 13px;
+      color: rgb(227, 172, 88);
+    }
+
+    .txt2 {
+      font-size: 15px;
+      font-weight: 800;
+      ;
+    }
+
+    .txt3 {
+      font-size: 15px;
+      color: rgb(255, 44, 2);
+    }
+
+    .txt4 {
+      font-size: 20px;
+      color: rgb(255, 44, 2);
+    }
+
+    .item .svg {
+      width: 15px;
+      height: 15px;
+      padding: 3px;
+      cursor: pointer;
+    }
+
+    .right {
+      flex: 3;
+    }
+
+    .orderInfo {
+      background-color: white;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .font1 {
+      color: rgb(219, 62, 62);
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .font2 {
+      color: rgb(173, 43, 43);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .padding {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .margin-top-20 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="left">
+      <div style="font-size: 36px; font-weight: 800;">Desserts</div>
+
+      <div class="leftbody">
+        <div class="item">
+          <img src="./assets/images/image-brownie-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Waffle</div>
+          <div class="txt2">Waffle with Berries</div>
+          <div class="txt3">$6.50</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="./assets/images/image-cake-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Vanilla Bean Crème Brûlée</div>
+          <div class="txt2">Vanilla Bean Crème Brûlée</div>
+          <div class="txt3">$7.00</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="./assets/images/image-creme-brulee-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Macaron Mix of Five</div>
+          <div class="txt2">Macaron</div>
+          <div class="txt3">$8.00</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="./assets/images/image-macaron-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Classic Tiramisu</div>
+          <div class="txt2">Tiramisu</div>
+          <div class="txt3">$5.50</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+        
+        <div class="item">
+          <img src="./assets/images/image-meringue-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Pistachio Baklava</div>
+          <div class="txt2">Baklava</div>
+          <div class="txt3">$4.00</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>  
+        </div>
+
+        <div class="item">
+          <img src="./assets/images/image-panna-cotta-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Lemon Meringue Pie</div>
+          <div class="txt2">Pie</div>
+          <div class="txt3">$5.00</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="./assets/images/image-tiramisu-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Red Velvet Cake</div>
+          <div class="txt2">Cake</div>
+          <div class="txt3">$4.50</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="./assets/images/image-waffle-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Salted Caramel Brownie</div>
+          <div class="txt2">Brownie</div>
+          <div class="txt3">$4.50</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="./assets/images/image-waffle-desktop.jpg" alt="" srcset="">
+          <div class="txt1">Vanilla Panna Cotta</div>
+          <div class="txt2">Panna Cotta</div>
+          <div class="txt3">$6.50</div>
+          <div class="add buy-tag">Add to Cart</div>
+          <div class="added">
+            <img class="svg t1" src="./assets/images/icon-decrement-quantity.svg" alt="描述文字">
+            <div class="t2">0</div>
+            <img class="svg t3" src="./assets/images/icon-increment-quantity.svg" alt="描述文字">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="orderInfo">
+        <div class="empty">
+          <div class="font1">Your Cart (<!-- Quantity -->)</div>
+            <img src="./assets/images/illustration-empty-cart.svg" width="100px" height="100px">
+            <div class="font2">Your added items will appear here</div class="font2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+  <div id="hiddenSvg" style="display: none;">
+    <svg id="addtag" width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="40" fill="tomato" />
+    </svg>
+  </div>
+
+
+  <script>
+    const map = new Map();
+    const empty = document.querySelector('.empty');
+    const info = document.querySelector('.orderInfo')
+
+    function reloadCart(){
+      console.log(map.size)
+      if (map.size === 0) {
+        empty.style.display = 'block'
+      } else {
+        empty.style.display = 'none'
+        info.innerHTML = ''
+        var total = 0;
+        for(const[key, obj] of map) {
+          const hr = document.createElement("hr")
+          const newDiv = document.createElement("div");
+          newDiv.classList.add('margin-top-20')
+          const line1 = document.createElement("div");
+          line1.classList.add('txt2')
+          line1.textContent = key;
+          const t1 = document.createElement("span");
+          const t2 = document.createElement("span");
+          const t3 = document.createElement("span");
+          t1.classList.add('txt3')
+          t2.classList.add('txt1', 'padding')
+          t3.classList.add('txt1', 'padding')
+          t1.textContent = obj.count + 'x'
+          t2.textContent = '$' + obj.price;
+          t3.textContent = '$' + obj.count * obj.price
+          total += obj.count * obj.price;
+          newDiv.appendChild(line1)
+          newDiv.appendChild(t1).appendChild(t2).appendChild(t3)
+          info.appendChild(newDiv)
+          info.appendChild(hr)
+        }
+
+        const div = document.createElement("div");
+        const d1 = document.createElement("span");
+        div.classList.add('margin-top-20')
+        d1.classList.add('txt1')
+        d1.textContent = "Order total"
+        const d2 = document.createElement("span");
+        d2.textContent = total
+        d1.classList.add('txt4')
+        d2.classList.add('txt4', 'padding')
+        div.appendChild(d1).appendChild(d2)
+        info.appendChild(div)
+      }
+    }
+
+    const t1s = document.querySelectorAll('.t1');
+    t1s.forEach(item => {
+      item.addEventListener('click', e => {
+        const t2 = item.parentElement.querySelector('.t2');
+        const name = item.parentElement.parentElement.querySelector('.txt1').innerHTML;
+        var price = item.parentElement.parentElement.querySelector('.txt3').innerHTML;
+        price = parseFloat(price.replace('$', ''))
+        var val = parseInt(t2.innerHTML)
+        if (val == 0) {
+          return;
+        }
+        val--;
+        t2.innerHTML = val;
+        const o = new Object();
+        o.name = name;
+        o.price = price
+        o.count = val
+        map.set(name, o);
+        reloadCart();
+      })
+
+    })
+
+    const t3s = document.querySelectorAll('.t3');
+    t3s.forEach(item => {
+      item.addEventListener('click', e => {
+        const t2 = item.parentElement.querySelector('.t2');
+        const name = item.parentElement.parentElement.querySelector('.txt1').innerHTML;
+        var price = item.parentElement.parentElement.querySelector('.txt3').innerHTML;
+        price = parseFloat(price.replace('$', ''))
+        var val = parseInt(t2.innerHTML)
+        val++;
+        t2.innerHTML = val;
+        const o = new Object();
+        o.name = name;
+        o.price = price
+        o.count = val
+        map.set(name, o);
+        reloadCart();
+      })
+    })
+
+    const addItems = document.querySelectorAll('.buy-tag');
+    addItems.forEach(item => {
+      item.addEventListener('click', e => {
+        if (item.classList.contains('add')) {
+          item.style.display = 'none';
+          const added = item.parentElement.querySelector('.added');
+          if (added) {
+            added.style.display = 'flex'
+          }
+        }
+      })
+    })
+
+
+
+  </script>
+</body>
+
+</html>
