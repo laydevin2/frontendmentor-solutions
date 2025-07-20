@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | E-commerce product page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .main {
+      margin-top: 15px;
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+    
+    .topBar {
+      display: flex;
+      height: 60px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .label {
+      width: 10%;
+      font-size: 30px;
+    }
+
+    .rightmenu {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 50px;
+    }
+
+    .leftmenu {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+    }
+
+    .leftmenu .item {
+      height: 40px;
+      width: 100px;
+      line-height: 40px;
+      text-align: center;
+      margin-left: 10px;
+      cursor: pointer;
+      font-weight: 400;
+      border-bottom: 0 solid #ffffff;
+      /* 初始無邊框 */
+    }
+
+    .leftmenu .item:hover {
+      font-weight: 800;
+      border-bottom: 3px solid #ff7c4d;
+      /* 初始無邊框 */
+    }
+
+    .mid {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .mid .leftbody {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 50%;
+    }
+
+    .mid .rightbody {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      width: 50%;
+    }
+
+    .leftbody .thumbs {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .leftbody .thumbs img {
+      width: 65px;
+      height: 65px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .active {
+      opacity: .5;
+      border: #ff2f0f 2px solid;
+    }
+
+    #lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      top: 0;
+      left: 0;
+    }
+
+    .lightbox-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    #lightbox img {
+      max-width: 600px;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
+
+    #cover {
+      border-radius: 15px;
+    }
+
+    #closeBtn {
+      position: absolute;
+      top: -40px;
+      right: 0px;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      filter: invert(64%) sepia(77%) saturate(3200%) hue-rotate(-15deg);
+
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .nav-arrow {
+      width: 60px;
+      height: 60px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 30px;
+      background: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    .nav-arrow.left {
+      left: -25px;
+    }
+
+    .nav-arrow.right {
+      right: -25px;
+    }
+
+    .font-bold {
+      font-weight: bold;
+    }
+
+    .font1 {
+      color:rgb(92, 92, 92);
+      font-size: 17px;
+    }
+    .font2 {
+      font-size: 30px;
+    }
+    .font3 {
+      font-size: 25px;
+      font-weight: bold;
+    }
+    .font4 {
+      font-size: 16px;
+      color: white;
+      background-color: #000000;
+      border-radius: 10px;
+      padding: 3px;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin-left: 10px;
+    }
+    .font5 {
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #f0a502;
+      border-radius: 10px;
+      padding: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-left: 10px;
+    }
+    .font6 {
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #ecebeb;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .font7 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #f8b90cf8;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background-color: #ecebeb;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+       user-select: none;
+    }
+    .font8 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #f8b90cf8;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background-color: #ecebeb;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+       user-select: none;
+    }
+
+    .font7:hover, .font8:hover {
+      cursor: pointer;
+    }
+
+    .font5 img {
+      vertical-align: -0.125em;        
+      margin-right: 8px;      
+    }
+
+    .flex1 {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main">
+    <div class="topBar">
+      <span class="label">Sneaker</span>
+      <div class="leftmenu">
+        <div class="item">Collections</div>
+        <div class="item">Men</div>
+        <div class="item">Women</div>
+        <div class="item">About</div>
+        <div class="item">Contact</div>
+      </div>
+      <div class="rightmenu">
+        <img src="./images/icon-cart.svg" alt="SVG 图像" width="15px" height="15px"
+          style="box-sizing: content-box;margin-right: 10px; padding: 5px; cursor: pointer;">
+        <img src="./images/image-avatar.png" width="25px" height="25px">
+      </div>
+    </div>
+    <hr>
+
+    <div class="mid">
+      <div class="leftbody">
+        <div>
+          <img id='cover' src="./images/image-product-1.jpg" alt="" srcset=""
+            style="cursor: pointer;width: 300px;height: 300px;margin-top: 50px;">
+          <div class="thumbs">
+            <img src="./images/image-product-1-thumbnail.jpg" class="thumb" alt="" srcset="" style="cursor: pointer;">
+            <img src="./images/image-product-2-thumbnail.jpg" class="thumb" alt="" srcset="" style="cursor: pointer;">
+            <img src="./images/image-product-3-thumbnail.jpg" class="thumb" alt="" srcset="" style="cursor: pointer;">
+            <img src="./images/image-product-4-thumbnail.jpg" class="thumb" alt="" srcset="" style="cursor: pointer;">
+          </div>
+        </div>
+      </div>
+      <div class="rightbody">
+        <div style="margin-top: 50px;">
+          <div class="font1">Sneaker Company</div><br><br>
+          <div class="font2 font-bold">Fall Limited Edition</div>
+          <div class="font2 font-bold">Sneakers</div>
+          <br><br>
+          <div class="font1">
+            These low-profile sneakers are your perfect casual wear companion. Featuring a
+            durable rubber outer sole, they’ll withstand everything the weather can offer.
+          </div>
+          <br>
+          <div class="flex1">
+            <span class="font3">$125.00</span>
+            <span class="font4">50%</span>
+          </div>
+          <br>
+          <div class="font1" style="text-decoration: line-through;">$250.00</div>
+          <br>
+
+          <span class="font7 count">-</span><span class="font6 totalcount">0</span><span class="font8 count">+</span>
+          <span class="font5"><img src="./images/icon-cart.svg"/> Add to cart</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lightbox" class="hidden">
+    <div class="overlay"></div>
+    <div class="lightbox-content">
+      <button id="prevBtn" class="nav-arrow left">&lt;</button>
+      <img id="lightboxImage" src="./images/image-product-1.jpg" alt="大圖">
+      <button id="nextBtn" class="nav-arrow right">&gt;</button>
+      <img src="images/icon-close.svg" id="closeBtn" />
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+    const images = document.querySelectorAll('.thumb')
+    const cover = document.querySelector('#cover')
+    const counts = document.querySelectorAll('.count')
+    const totalcount = document.querySelector('.totalcount')
+
+    counts.forEach(item => {
+      item.addEventListener('click', e => {
+        let val = item.innerHTML
+        if (val == '-' && count > 0) {
+          count--;
+          totalcount.innerHTML = count
+        } else if (val == '+') {
+          count++;
+          totalcount.innerHTML = count
+        }
+      })
+    })
+
+    function removeStyle() {
+      images.forEach(item => {
+        item.classList.remove('active')
+      })
+    }
+
+    images.forEach(item => {
+      item.addEventListener('click', e => {
+        cover.setAttribute('src', item.getAttribute('src'))
+        removeStyle()
+        item.classList.add('active')
+      })
+    })
+
+    if (images.length > 0){
+      images[0].click();
+    }
+
+
+
+    const lightbox = document.getElementById('lightbox');
+    const closeBtn = document.getElementById('closeBtn');
+    const lightboxImage = document.getElementById('lightboxImage');
+
+    cover.addEventListener('click', () => {
+      lightbox.classList.remove('hidden');
+      let src = cover.src.replace('-thumbnail', '');
+      lightboxImage.src = src
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+    });
+
+    // 點背景遮罩也可以關閉
+    lightbox.querySelector('.overlay').addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+    });
+
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    prevBtn.addEventListener('click', e => {
+      let src = lightboxImage.src;
+      let parts = src.split("-");
+      let number = parts[parts.length - 1].split(".")[0];
+      let number2 = number
+      if (number2 == 1) 
+        number2 = 4
+      else  
+        number2--
+      src = src.replace(number, number2)
+      lightboxImage.src = src
+    });
+    nextBtn.addEventListener('click', e => {
+      let src = lightboxImage.src;
+      let parts = src.split("-");
+      let number = parts[parts.length - 1].split(".")[0];
+      let number2 = number
+      if (number2 >= 4) 
+        number2 = 1
+      else  
+        number2++
+
+      console.log(src)
+      src = src.replace(number, number2)
+      lightboxImage.src = src
+      console.log(src)
+    });
+
+  </script>
+</body>
+
+</html>
